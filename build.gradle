@@ -1,0 +1,35 @@
+plugins {
+    id 'java'
+}
+
+group 'bsh.tithe'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+    maven {
+        name 'minecraft-repo'
+        url 'https://libraries.minecraft.net/'
+    }
+    maven { url 'https://repo.md-5.net/content/groups/public/' }
+    maven { url 'https://jitpack.io' }
+    maven { url "https://repo.dmulloy2.net/repository/public/" }
+    maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
+    maven { url 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/' }
+}
+
+
+dependencies {
+    compileOnly 'com.mojang:authlib:1.5.21'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+    compileOnly fileTree(dir: 'libs', include: '*.jar')
+    compileOnly group: "com.comphenix.protocol", name: "ProtocolLib", version: "4.8.0";
+    compileOnly 'com.github.oraxen:oraxen:1.152.1'
+    compileOnly 'org.spigotmc:spigot-api:1.19.3-R0.1-SNAPSHOT'
+    compileOnly 'LibsDisguises:LibsDisguises:10.0.32'
+}
+
+test {
+    useJUnitPlatform()
+}

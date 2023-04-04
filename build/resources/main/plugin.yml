@@ -1,0 +1,13 @@
+name: Tithe
+version: 1.0.0
+api-version: '1.19'
+main: bsh.tithe.Tithe
+commands:
+  test:
+    description: Test command.
+    usage: /test
+    permission: tithe.test
+  sleepme:
+    description: Test command.
+    usage: /sleepme
+    permission: tithe.sleepme
