@@ -4,7 +4,59 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="51125bf7-085d-458b-8176-94f0b6530c7b" name="Changes" comment="" />
+    <list default="true" id="74fb4d4d-5b14-4e78-8ffd-3e7269994341" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/bsh/tithe/commands/TitheCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/bsh/tithe/commands/TitheTabCompleter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/bsh/tithe/entity/Ruler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/bsh/tithe/events/ThroneClaimEvent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/bsh/tithe/listeners/PlayerJoinListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/players.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/rulers.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.5.1/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5.1/checksums/checksums.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.5.1/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5.1/checksums/md5-checksums.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.5.1/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5.1/checksums/sha1-checksums.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.5.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5.1/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.5.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5.1/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.5.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5.1/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.5.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.5.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/tithe-gradle.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/tithe-gradle.main.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/bsh/tithe/Tithe.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/bsh/tithe/Tithe.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/bsh/tithe/commands/AbdicateThrone.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/bsh/tithe/commands/GetMonarchCrown.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/bsh/tithe/commands/GetMonarchShield.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/bsh/tithe/commands/GetMonarchSword.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/bsh/tithe/commands/NominatePartner.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/bsh/tithe/commands/NominatePrince.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/bsh/tithe/commands/SleepCommand.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/bsh/tithe/commands/Test.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/bsh/tithe/listeners/TaxListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/bsh/tithe/listeners/TaxListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/bsh/tithe/listeners/ThroneClaimListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/bsh/tithe/listeners/ThroneClaimListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/libs/tithe-gradle-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/build/libs/tithe-gradle-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/plugin.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bsh/tithe/Tithe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bsh/tithe/Tithe.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bsh/tithe/commands/AbdicateThrone.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bsh/tithe/commands/GetMonarchCrown.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bsh/tithe/commands/GetMonarchShield.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bsh/tithe/commands/GetMonarchSword.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bsh/tithe/commands/NominatePartner.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bsh/tithe/commands/NominatePrince.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bsh/tithe/commands/SleepCommand.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bsh/tithe/commands/Test.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bsh/tithe/listeners/TaxListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bsh/tithe/listeners/TaxListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bsh/tithe/listeners/ThroneClaimListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bsh/tithe/listeners/ThroneClaimListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/plugin.yml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -53,26 +105,35 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="2MOCjaVsokkjwHrWwxV1p2HMm4W" />
+  <component name="ProjectId" id="2NyGKpq8vlgqYIgjUjAvVlG536V" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.projectsettings.compiler.javacompiler&quot;
-  }
-}</component>
-  <component name="RunManager" selected="Gradle.tithe-gradle [jar]">
-    <configuration name="tithe-gradle [buildDependents]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
+  </component>
+  <component name="RunManager" selected="Gradle.tithe [jar]">
+    <configuration name="tithe [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -83,7 +144,7 @@
         </option>
         <option name="taskNames">
           <list>
-            <option value="buildDependents" />
+            <option value="build" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -93,7 +154,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="tithe-gradle [jar]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="tithe [jar]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -114,7 +175,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="tithe-gradle [testClasses]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="tithe [testClasses]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -137,21 +198,32 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.tithe-gradle [jar]" />
-        <item itemvalue="Gradle.tithe-gradle [testClasses]" />
-        <item itemvalue="Gradle.tithe-gradle [buildDependents]" />
+        <item itemvalue="Gradle.tithe [jar]" />
+        <item itemvalue="Gradle.tithe [build]" />
+        <item itemvalue="Gradle.tithe [testClasses]" />
       </list>
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="51125bf7-085d-458b-8176-94f0b6530c7b" name="Changes" comment="" />
-      <created>1677629379069</created>
+      <changelist id="74fb4d4d-5b14-4e78-8ffd-3e7269994341" name="Changes" comment="" />
+      <created>1680628848649</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1677629379069</updated>
+      <updated>1680628848649</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
