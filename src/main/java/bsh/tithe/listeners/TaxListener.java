@@ -13,24 +13,21 @@ import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockDropItemEvent;
 import org.bukkit.inventory.ItemStack;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
 public class TaxListener implements Listener {
 
-    private static int DIAMOND_COFFERS = 0;
-    // TODO: convert from legacy to normal
-    public Material[] taxableMats = {
+    public ArrayList<Material> taxableMats = new ArrayList<>(Arrays.asList(
             Material.DIAMOND,
             Material.COAL,
-            Material.RAW_IRON,
-            Material.RAW_GOLD,
             Material.WHEAT,
             Material.CARROT,
             Material.MELON_SLICE,
-            Material.BEETROOT,
-            Material.POTATO,
-    };
+            Material.BEETROOT
+    ));
 
     public Material legacyToNormal(Material m) {
         String materialName = m.toString();
@@ -53,6 +50,7 @@ public class TaxListener implements Listener {
             case "LEGACY_DIAMOND":
                 materialName = "DIAMOND";
                 break;
+
         }
         return Material.valueOf(materialName);
     }
@@ -68,23 +66,20 @@ public class TaxListener implements Listener {
         catch (IllegalArgumentException iae){
             ruler = null;
         }
-        if(!e.getItems().isEmpty() && ruler != null && TAXRATE != 0){
+        if(!e.getItems().isEmpty() && ruler != null && TAXRATE != 0 ){
             ItemStack is = e.getItems().get(0).getItemStack();
             Material m = legacyToNormal(is.getData().getItemType());
-            is.setType(m);
-            int amountDropped = is.getAmount();
 
-            Player p = e.getPlayer();
-            if(amountDropped > 0){ // if it's an actual item
-                for(int i = 0; i < taxableMats.length; i++){
-                    if(m.equals(taxableMats[i])){
-                        int chanceOfTax = new Random().nextInt(10);
-                        if(chanceOfTax <= TAXRATE * 10){
-                            is.setAmount(0);
-                            DIAMOND_COFFERS += amountDropped;
-                            p.sendMessage(Tithe.EXCLAMATION_MSG + ChatColor.GRAY + "Your " + m.toString().toLowerCase() + " has been taxed by Monarch " + ruler.getName() + " at the current rate of " + ChatColor.RED + TAXRATE * 100  + "%");
-                            Bukkit.broadcastMessage("Diamond Coffers: " + String.valueOf(DIAMOND_COFFERS));
-                        }
+            if(taxableMats.contains(m)){
+                is.setType(m);
+                int amountDropped = is.getAmount();
+                Player p = e.getPlayer();
+                if(amountDropped > 0){ // if it's an actual item
+                    int chanceOfTax = new Random().nextInt(10);
+                    if(chanceOfTax <= TAXRATE * 10){
+                        ruler.getPlayer().getEnderChest().addItem(is);
+                        is.setAmount(0);
+                        p.sendMessage(Tithe.EXCLAMATION_MSG + ChatColor.GRAY + "Your " + m.toString().toLowerCase() + " has been taxed by Monarch " + ruler.getName() + " at the current rate of " + ChatColor.RED + TAXRATE * 100  + "%");
                     }
                 }
             }

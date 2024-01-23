@@ -7,8 +7,10 @@ import io.th0rgal.oraxen.api.events.OraxenFurnitureInteractEvent;
 import io.th0rgal.oraxen.items.ItemBuilder;
 import net.luckperms.api.LuckPerms;
 import net.luckperms.api.LuckPermsProvider;
+import net.luckperms.api.model.group.Group;
 import net.luckperms.api.model.user.User;
 import net.luckperms.api.node.Node;
+import net.luckperms.api.node.types.InheritanceNode;
 import net.luckperms.api.node.types.MetaNode;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -16,10 +18,12 @@ import org.bukkit.Material;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
+import org.bukkit.boss.BarColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerQuitEvent;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.permissions.PermissionAttachment;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitTask;
@@ -28,9 +32,11 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-import static bsh.tithe.Tithe.updateTopRulerPermission;
+import static bsh.tithe.Tithe.*;
+
 
 public class ThroneClaimListener implements Listener {
+    private final Integer CONQUER_TIMER = 20 * 10;
     private final Map<UUID, BukkitTask> playerTimers = Tithe.playerTimers;
     private String EXCLAMATION_MSG = ChatColor.RESET + "" + ChatColor.RED +
             ChatColor.BOLD + "" + ChatColor.UNDERLINE + "" + "!" + ChatColor.RESET + " ";
@@ -51,6 +57,38 @@ public class ThroneClaimListener implements Listener {
             luckPerms.getUserManager().saveUser(user);
         }
     }
+
+    public void addPlayerToRulerGroup(UUID playerUUID) {
+        LuckPerms api = luckPermsApi;
+
+        // Load user into memory and perform action
+        api.getUserManager().loadUser(playerUUID).thenAccept(user -> {
+            Group group = api.getGroupManager().getGroup("ruler");
+
+            if (group != null) {
+                InheritanceNode groupNode = InheritanceNode.builder(group).build();
+                user.data().add(groupNode);
+                api.getUserManager().saveUser(user);
+            }
+        });
+    }
+
+    public void removePlayerFromRulerGroup(UUID playerUUID) {
+        LuckPerms api = luckPermsApi;
+
+        // Load user into memory and perform action
+        api.getUserManager().loadUser(playerUUID).thenAccept(user -> {
+            Group group = api.getGroupManager().getGroup("ruler");
+
+            if (group != null) {
+                InheritanceNode groupNode = InheritanceNode.builder(group).build();
+                user.data().remove(groupNode);
+                api.getUserManager().saveUser(user);
+            }
+        });
+    }
+
+
 
     public String getThroneName(String itemID) {
         switch (itemID) {
@@ -88,8 +126,7 @@ public class ThroneClaimListener implements Listener {
         String itemName = e.getMechanic().getItemID().toString();
 
         // If a player is sitting on a throne
-        if (!getThroneName(itemName).equals(null)) {
-
+        if (getThroneName(itemName) != (null)) {
             // Cancel any existing timer for this player
             this.cancelExistingTimer(playerId);
 
@@ -110,11 +147,22 @@ public class ThroneClaimListener implements Listener {
             // Broadcast to the world that the player is claiming the throne
             Ruler r = new Ruler(playerId, player.getName());
             if(!r.ownsCountry(country)){
-                event.broadcastThroneClaimMessage();
+                ItemStack offHandItem = player.getInventory().getItemInOffHand();
+
+                if (offHandItem.getType() == Material.GOLD_INGOT && offHandItem.getAmount() >= 8) {
+                    offHandItem.setAmount(offHandItem.getAmount() - 24);
+                    player.getInventory().setItemInOffHand(offHandItem);
+                    player.updateInventory();
+                    event.broadcastThroneClaimMessage();
+                } else {
+                    player.sendMessage(ChatColor.RED + "You must have 8 gold ingots in your " + ChatColor.BOLD + "" + ChatColor.WHITE + "offhand slot" + ChatColor.RESET + "" + ChatColor.RED + " to claim a throne!");
+                    e.setCancelled(true);
+                    return;
+                }
             }
 
             // Start a 60-second timer
-            BukkitTask timer = createTimerTask(playerId, event).runTaskTimer(Tithe.getPlugin(), 0, 20 * 1);
+            BukkitTask timer = createTimerTask(playerId, event).runTaskTimer(Tithe.getPlugin(), 0, CONQUER_TIMER); // ten seconds per
 
             // Store the timer task in the map
             playerTimers.put(playerId, timer);
@@ -130,13 +178,27 @@ public class ThroneClaimListener implements Listener {
 
 
     private BukkitRunnable createTimerTask(UUID playerId, ThroneClaimEvent event) {
-
         return new BukkitRunnable() {
-            Player player = (Player) Bukkit.getOfflinePlayer(playerId);
+            Player player = Bukkit.getPlayer(playerId);
             int count = 0;
+            double initialHealth = player.getHealth();
 
             @Override
             public void run() {
+                // Check if player is still online
+                if (player == null || !player.isOnline()) {
+                    playerTimers.remove(playerId);
+                    this.cancel();
+                    return;
+                }
+
+                // Check if player has taken damage
+                if (player.getHealth() < initialHealth) {
+                    player.sendMessage(ChatColor.RED + "You have taken damage. Throne claim interrupted.");
+                    playerTimers.remove(playerId);
+                    this.cancel();
+                    return;
+                }
 
                 // if player already owns this throne, just let them sit
                 Ruler currentRuler = Tithe.getRulerOfNation(event.getCountry());
@@ -145,7 +207,8 @@ public class ThroneClaimListener implements Listener {
                     this.cancel();
                     return;
                 }
-                // check if player leaves the throne  before claiming finishes
+
+                // check if player leaves the throne before claiming finishes
                 if (!player.isInsideVehicle()) {
                     playerTimers.remove(playerId);
                     this.cancel();
@@ -155,11 +218,11 @@ public class ThroneClaimListener implements Listener {
                 // loading screen
                 if (count < 6) {
                     String loadingBar = "++++++".substring(0, count) + "------".substring(count);
-                    player.sendTitle(ChatColor.YELLOW + loadingBar, ChatColor.GREEN + "Conquering...", 0, 30, 0);
+                    player.sendTitle(ChatColor.YELLOW + loadingBar, ChatColor.GREEN + "Conquering...", 0, CONQUER_TIMER, 0);
+                    event.broadcastThroneClaimProgressMessage(count);
                     count++;
-
-                // once the loading is finished, update the rulers
                 } else {
+                    // once the loading is finished, update the rulers
                     event.broadcastConqueredMessage(player); // broadcast conquered message
                     Ruler oldRuler = Tithe.getRulers().get(event.country); // get old Ruler of now conquered throne
 
@@ -168,13 +231,11 @@ public class ThroneClaimListener implements Listener {
 
                     // Add or replace the player's entry in the rulers map
                     Ruler newRuler;
-                    if(Tithe.isPlayerRuler(playerId)){ // if conqueror already exists
+                    if (Tithe.isPlayerRuler(playerId)) { // if conqueror already exists
                         newRuler = Tithe.getRuler(playerId);
-                    }
-                    else{ // if conqueror is brand new to the game of thrones
+                    } else { // if conqueror is brand new to the game of thrones
                         newRuler = new Ruler(playerId, Bukkit.getOfflinePlayer(playerId).getName());
                     }
-
 
                     // crown the new ruler by replacing the map entry
                     event.promotePlayer(newRuler);
@@ -183,16 +244,18 @@ public class ThroneClaimListener implements Listener {
                         UUID oldRulerUUID = oldRuler.getUuid();
 
                         // Assume you have LuckPerms API already set up as luckPermsApi
-
                         User oldRulerUser = Tithe.luckPermsApi.getUserManager().getUser(oldRulerUUID);
                         if (oldRulerUser != null) {
                             if (oldRuler.getThroneCount().equals(3)) {
                                 Node node = Node.builder("tithe.taxes").value(false).build();
+                                Node essentialsNode = Node.builder("essentials.enderchest").value(false).build();
                                 oldRulerUser.data().add(node);
+                                oldRulerUser.data().add(essentialsNode);
                                 Tithe.luckPermsApi.getUserManager().saveUser(oldRulerUser);  // Save the user data
                                 Bukkit.broadcastMessage(EXCLAMATION_MSG + ChatColor.BOLD + ChatColor.YELLOW
                                         + oldRuler.getUsername() + ChatColor.WHITE
                                         + " has lost majority dominion and can no longer levy taxes.");
+                                event.removeMonarchPermissions(oldRuler.getUuid());
                             }
 
                         }
@@ -200,23 +263,35 @@ public class ThroneClaimListener implements Listener {
                         Tithe.decrementPlayerThroneCount(oldRulerUUID);
                     }
 
+                    Tithe.createBossBar();
+                    if (newRuler.getThroneCount() >= 3){
+                        event.addMonarchPermissions(newRuler.getUuid());
+                        Bukkit.broadcastMessage(EXCLAMATION_MSG + ChatColor.YELLOW + "" + ChatColor.BOLD + "" + player.getName() + ChatColor.WHITE + "" +
+                                " is now the " + ChatColor.RED + "Monarch of Europe"
+                                + ChatColor.WHITE + " and may now levy taxes.");
+                        player.sendMessage(ChatColor.GREEN + "Welcome, Leader of Europe!");
+                        player.sendMessage(ChatColor.YELLOW + " - Use /enderchest to view your royal coffers.");
+                        player.sendMessage(ChatColor.YELLOW + " - Use /tithe settax 50% to set the GLOBAL tax rate.");
+                        player.sendMessage(ChatColor.GREEN + "Watch out for inva");
+                        Tithe.setBossBarColor(BarColor.RED);
+                        Tithe.setBossBarMessage("Hail " + newRuler.getUsername() + "!");
+                    }
 
-
-                    updateTopRulerPermission();
-
-                    Bukkit.broadcastMessage(String.valueOf(Tithe.getThroneCount(newRuler.getUuid()))); // debug, delete on release
-                    // setPlayerSuffix(player, "\uA41C"); // set the ruler suffix to the crown glyph
-
+                    else if(Tithe.getRuler(Tithe.getTopRuler()) == null){
+                        Tithe.setBossBarColor(BarColor.PURPLE);
+                        Tithe.setBossBarMessage("No current Monarch.");
+                    }
+                    Tithe.updateBossBarForAll();
+                    addPlayerToRulerGroup(newRuler.getUuid());
+                    if(oldRuler != null){
+                        if(oldRuler.getThroneCount() == 0){
+                            removePlayerFromRulerGroup(oldRuler.getUuid());
+                        }
+                    }
                 }
             }
         };
     }
-
-    private void givePlayerCrown(Player player) {
-        ItemBuilder crownBuilder = OraxenItems.getItemById("crown");
-        player.getInventory().addItem(crownBuilder.build());
-    }
-
 
 
 

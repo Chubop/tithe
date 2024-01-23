@@ -4,15 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="74fb4d4d-5b14-4e78-8ffd-3e7269994341" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/bsh/tithe/commands/TitheCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/bsh/tithe/commands/TitheTabCompleter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/bsh/tithe/entity/Ruler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/bsh/tithe/events/ThroneClaimEvent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/bsh/tithe/listeners/PlayerJoinListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/players.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/rulers.yml" afterDir="false" />
+    <list default="true" id="74fb4d4d-5b14-4e78-8ffd-3e7269994341" name="Changes" comment="first commit">
       <change beforePath="$PROJECT_DIR$/.gradle/7.5.1/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5.1/checksums/checksums.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.5.1/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5.1/checksums/md5-checksums.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.5.1/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5.1/checksums/sha1-checksums.bin" afterDir="false" />
@@ -22,37 +14,19 @@
       <change beforePath="$PROJECT_DIR$/.gradle/7.5.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5.1/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.5.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/tithe-gradle.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/tithe-gradle.main.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/bsh/tithe/Tithe.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/bsh/tithe/Tithe.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/bsh/tithe/commands/AbdicateThrone.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/bsh/tithe/commands/GetMonarchCrown.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/bsh/tithe/commands/GetMonarchShield.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/bsh/tithe/commands/GetMonarchSword.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/bsh/tithe/commands/NominatePartner.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/bsh/tithe/commands/NominatePrince.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/bsh/tithe/commands/SleepCommand.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/bsh/tithe/commands/Test.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/bsh/tithe/listeners/TaxListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/bsh/tithe/listeners/TaxListener.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/bsh/tithe/listeners/ThroneClaimListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/bsh/tithe/listeners/ThroneClaimListener.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/libs/tithe-gradle-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/build/libs/tithe-gradle-1.0-SNAPSHOT.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/resources/main/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/plugin.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/bsh/tithe/Tithe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bsh/tithe/Tithe.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bsh/tithe/commands/AbdicateThrone.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bsh/tithe/commands/GetMonarchCrown.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bsh/tithe/commands/GetMonarchShield.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bsh/tithe/commands/GetMonarchSword.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bsh/tithe/commands/NominatePartner.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bsh/tithe/commands/NominatePrince.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bsh/tithe/commands/SleepCommand.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bsh/tithe/commands/Test.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bsh/tithe/commands/TitheCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bsh/tithe/commands/TitheCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bsh/tithe/entity/Ruler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bsh/tithe/entity/Ruler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bsh/tithe/events/ThroneClaimEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bsh/tithe/events/ThroneClaimEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bsh/tithe/listeners/PlayerJoinListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bsh/tithe/listeners/PlayerJoinListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/bsh/tithe/listeners/TaxListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bsh/tithe/listeners/TaxListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/bsh/tithe/listeners/ThroneClaimListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bsh/tithe/listeners/ThroneClaimListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/plugin.yml" afterDir="false" />
@@ -128,7 +102,8 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Cursor Projects/beyond-nowhere" />
+    <property name="project.structure.last.edited" value="Problems" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
@@ -213,6 +188,14 @@
       <option name="presentableId" value="Default" />
       <updated>1680628848649</updated>
     </task>
+    <task id="LOCAL-00001" summary="first commit">
+      <created>1685893443805</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1685893443805</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -225,5 +208,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="first commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="first commit" />
   </component>
 </project>

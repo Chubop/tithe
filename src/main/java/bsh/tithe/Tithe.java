@@ -11,6 +11,9 @@ import net.luckperms.api.LuckPermsProvider;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.OfflinePlayer;
+import org.bukkit.boss.BarColor;
+import org.bukkit.boss.BarStyle;
+import org.bukkit.boss.BossBar;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -18,11 +21,13 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import com.comphenix.protocol.ProtocolLibrary;
 import com.comphenix.protocol.ProtocolManager;
 
+import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.permissions.PermissionAttachment;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.*;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -48,7 +53,7 @@ public class Tithe extends JavaPlugin implements Listener {
     }
 
     public static float taxRate = 0;
-
+    public static BossBar bb = null;
 
     public static Map<String, Ruler> getRulers() {
         return rulers;
@@ -208,23 +213,32 @@ public class Tithe extends JavaPlugin implements Listener {
 
     // END PLAYERS FILE
 
-    // BEGIN MONARCH
-    public static void updateTopRulerPermission() {
-        UUID topRuler = getTopRuler();
-        if(topRuler != null){
-            Bukkit.broadcastMessage("top ruler: " + topRuler.toString());
-            OfflinePlayer player = Bukkit.getOfflinePlayer(topRuler);
-            PermissionAttachment attachment = player.getPlayer().addAttachment(Tithe.getPlugin());
-            Integer throneCount = getThroneCount(topRuler);
-            Bukkit.broadcastMessage("Top Ruler " + player.getName() + " has " + throneCount.toString() + " thrones.");
-            Boolean hasPermission = attachment.getPermissions().getOrDefault("tithe.taxes", false);
 
-            if (throneCount >= 3) {
-                attachment.setPermission("tithe.taxes", true);
-                Bukkit.broadcastMessage(EXCLAMATION_MSG + ChatColor.YELLOW + "" + ChatColor.BOLD + "" + player.getName() + ChatColor.WHITE + "" +
-                        " is now the " + ChatColor.RED + "Monarch of Europe"
-                        + ChatColor.WHITE + " and may now levy taxes.");
-            }
+    // BOSS BAR
+
+    public static void createBossBar() {
+        if(bb == null){
+            bb = Bukkit.createBossBar("", BarColor.PURPLE, BarStyle.SEGMENTED_12);
+        }
+    }
+
+    public static void givePlayerBossBar(Player p){
+        bb.addPlayer(p);
+    }
+
+    public static void setBossBarMessage(String message){
+        bb.setTitle(message);
+        bb.setVisible(true);
+    }
+
+    public static void setBossBarColor(BarColor color){
+        bb.setColor(color);
+    }
+
+    public static void updateBossBarForAll() {
+        Collection<? extends Player> players = Bukkit.getOnlinePlayers();
+        for (Player player : players) {
+            bb.addPlayer(player);
         }
     }
 

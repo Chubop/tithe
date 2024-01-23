@@ -4,6 +4,10 @@ import bsh.tithe.Tithe;
 import bsh.tithe.entity.Ruler;
 import io.th0rgal.oraxen.api.OraxenItems;
 import io.th0rgal.oraxen.items.ItemBuilder;
+import net.luckperms.api.LuckPerms;
+import net.luckperms.api.model.user.User;
+import net.luckperms.api.node.Node;
+import net.luckperms.api.node.types.MetaNode;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -51,14 +55,28 @@ public class ThroneClaimEvent extends Event implements Cancellable {
         );
     }
 
+    public void broadcastThroneClaimProgressMessage(Integer step){
+        Bukkit.broadcastMessage(
+                EXCLAMATION_MSG +
+                        EXCLAMATION_MSG +
+                        ChatColor.YELLOW +
+                        this.player.getName() +
+                        ChatColor.WHITE +
+                        " is now claiming "
+                        + this.country + " " + "(" + String.valueOf(step) + "/6) " +
+                        EXCLAMATION_MSG
+                        + EXCLAMATION_MSG
+        );
+    }
+
     public void broadcastConqueredMessage(Player player) {
         Map<String, Ruler> currRulers = Tithe.getRulers();
         if(!currRulers.containsKey(this.getCountry())){
-            Bukkit.broadcastMessage(EXCLAMATION_MSG + ChatColor.YELLOW + player.getName() + ChatColor.WHITE + " has claimed " + ChatColor.YELLOW + this.getCountry() + ChatColor.WHITE + "!");
+            Bukkit.broadcastMessage(EXCLAMATION_MSG + ChatColor.BOLD + "" + ChatColor.YELLOW + player.getName() + ChatColor.WHITE + " has claimed " + ChatColor.YELLOW + this.getCountry() + ChatColor.WHITE + "!");
         }
         else{
             String lastRulerName = currRulers.get(country).getUsername(); // previous ruler before we update the map
-            Bukkit.broadcastMessage(EXCLAMATION_MSG + ChatColor.YELLOW + player.getName() + ChatColor.WHITE + " has conquered " + ChatColor.YELLOW + this.getCountry() + ChatColor.WHITE + " from " + ChatColor.YELLOW + lastRulerName);
+            Bukkit.broadcastMessage(EXCLAMATION_MSG + ChatColor.BOLD + "" + ChatColor.YELLOW + player.getName() + ChatColor.WHITE + " has conquered " + ChatColor.YELLOW + this.getCountry() + ChatColor.WHITE + " from " + ChatColor.YELLOW + lastRulerName);
         }
     }
 
@@ -66,6 +84,23 @@ public class ThroneClaimEvent extends Event implements Cancellable {
         ruler.setRuler(this.getCountry());
     }
 
+    public void addMonarchPermissions(UUID uuid) {
+        User user = Tithe.luckPermsApi.getUserManager().getUser(uuid);
+        Node node = Node.builder("tithe.taxes").value(true).build();
+        Node essentialsNode = Node.builder("essentials.enderchest").value(true).build();
+
+        user.data().add(node);
+        user.data().add(essentialsNode);
+    }
+
+    public void removeMonarchPermissions(UUID uuid) {
+        User user = Tithe.luckPermsApi.getUserManager().getUser(uuid);
+        Node node = Node.builder("tithe.taxes").value(true).build();
+        Node essentialsNode = Node.builder("essentials.enderchest").value(true).build();
+
+        user.data().remove(node);
+        user.data().remove(essentialsNode);
+    }
 
     public static HandlerList getHandlerList() {
         return HANDLERS;

@@ -4,5 +4,5 @@ api-version: '1.19'
 main: bsh.tithe.Tithe
 commands:
   tithe:
-    description: Manually save the rulers file.
+    description: Main command.
     usage: /<command> save

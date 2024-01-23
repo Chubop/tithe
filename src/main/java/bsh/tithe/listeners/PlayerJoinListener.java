@@ -21,5 +21,8 @@ public class PlayerJoinListener implements Listener {
             plugin.getPlayersConfig().set("players." + playerId.toString() + ".displayName", playerName);
             Tithe.savePlayersFile();
         }
+        if(Tithe.bb != null){
+            Tithe.givePlayerBossBar(event.getPlayer());
+        }
     }
 }
